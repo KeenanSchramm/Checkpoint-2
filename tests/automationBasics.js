@@ -154,7 +154,7 @@ module.exports = {
             .click('@palConfBtn')
             .verify.containsText('@palResults', "true")
             .clearValue('@palInput')
-            
+
     },
     'Palindrome unacceptable input': browser => {
         automationBasics
@@ -183,8 +183,6 @@ module.exports = {
             .verify.containsText('@palResults', "false")
             .clearValue('@palInput')
     },
-
-    
     'Sum acceptable input': browser => {
         automationBasics
             .setValue('@sumInput1', '5')
@@ -192,33 +190,43 @@ module.exports = {
             .click('@sumConfBtn')
             .expect.element('@sumResults').text.to.equal("Sum: 10")
         automationBasics
+            .clearValue('@sumInput1')
+            .clearValue('@sumInput2')
             .setValue('@sumInput1', '10')
             .setValue('@sumInput2', '10')
             .click('@sumConfBtn')
             .expect.element('@sumResults').text.to.equal("Sum: 20")
         automationBasics
+            .clearValue('@sumInput1')
+            .clearValue('@sumInput2')
             .setValue('@sumInput1', '123456789')
             .setValue('@sumInput2', '789456123')
             .click('@sumConfBtn')
             .expect.element('@sumResults').text.to.equal("Sum: 912912912")
         automationBasics
+            .clearValue('@sumInput1')
+            .clearValue('@sumInput2')
             .setValue('@sumInput1', '326159487')
             .setValue('@sumInput2', '951487623')
             .click('@sumConfBtn')
             .expect.element('@sumResults').text.to.equal("Sum: 1277647110")
-   },
-   
-   'Sum unacceptable input': browser => {
+    },
+
+    'Sum unacceptable input': browser => {
         automationBasics
+            .clearValue('@sumInput1')
+            .clearValue('@sumInput2')
             .setValue('@sumInput1', 'EEEE')
             .setValue('@sumInput2', 'eeee')
             .click('@sumConfBtn')
-            .expect.element('@sumResults').text.to.equal("Sum: NaN")
+            .expect.element('@sumResults').text.to.equal("Sum: 0")
         automationBasics
+            .clearValue('@sumInput1')
+            .clearValue('@sumInput2')
             .setValue('@sumInput1', '2+2')
             .setValue('@sumInput2', '10')
             .click('@sumConfBtn')
             .expect.element('@sumResults').text.to.equal("Sum: NaN")
-   
-},
+
+    },
 }
